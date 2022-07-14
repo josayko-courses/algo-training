@@ -5,7 +5,7 @@ from collections import namedtuple
 Result = namedtuple("Result", "time rval")
 
 
-def chrono(func, *args):
+def chrono(func: callable, *args) -> Result:
     start = timer()
     rval = func(*args)
     end = timer()

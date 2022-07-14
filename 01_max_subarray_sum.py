@@ -4,7 +4,7 @@ Subarrays are arrays inside another array which only contains contiguous element
 """
 
 import csv
-from utils.chrono import chrono
+from utils.time import chrono
 
 INT_MIN = -(2**31)
 
@@ -66,25 +66,25 @@ if __name__ == "__main__":
 
     print("== Cumulative sum ==")
     ret = chrono(max_subarray_sum1, a)
-    print(f"nums={a}", "returns:", ret.rval, "takes:", ret.time)
+    print(f"nums={a},", "returns:", f"{ret.rval},", "takes:", ret.time)
     ret = chrono(max_subarray_sum1, b)
-    print(f"nums={b}", "returns:", ret.rval, "takes:", ret.time)
+    print(f"nums={b},", "returns:", f"{ret.rval},", "takes:", ret.time)
     ret = chrono(max_subarray_sum1, c)
-    print(f"nums={c}", "returns:", ret.rval, "takes:", ret.time)
+    print(f"nums={c},", "returns:", f"{ret.rval},", "takes:", ret.time)
     ret = chrono(max_subarray_sum1, d)
-    print(f"nums={d}", "returns:", ret.rval, "takes:", ret.time)
+    print(f"nums={d},", "returns:", f"{ret.rval},", "takes:", ret.time)
     ret = chrono(max_subarray_sum1, e)
-    print(f"for a list of 15000 numbers", "returns:", ret.rval, "takes:", ret.time)
+    print("15000 numbers,", "returns:", f"{ret.rval},", "takes:", ret.time)
 
     print()
     print("== Kadane's algorithm ==")
     ret = chrono(max_subarray_sum2, a)
-    print(f"nums={a}", "returns:", ret.rval, "takes:", ret.time)
+    print(f"nums={a},", "returns:", f"{ret.rval},", "takes:", ret.time)
     ret = chrono(max_subarray_sum2, b)
-    print(f"nums={b}", "returns:", ret.rval, "takes:", ret.time)
+    print(f"nums={b},", "returns:", f"{ret.rval},", "takes:", ret.time)
     ret = chrono(max_subarray_sum2, c)
-    print(f"nums={c}", "returns:", ret.rval, "takes:", ret.time)
+    print(f"nums={c},", "returns:", f"{ret.rval},", "takes:", ret.time)
     ret = chrono(max_subarray_sum2, d)
-    print(f"nums={d}", "returns:", ret.rval, "takes:", ret.time)
+    print(f"nums={d}", "returns:", f"{ret.rval},", "takes:", ret.time)
     ret = chrono(max_subarray_sum2, e)
-    print(f"for a list of 15000 numbers", "returns:", ret.rval, "takes:", ret.time)
+    print("15000 numbers,", "returns:", f"{ret.rval},", "takes:", ret.time)

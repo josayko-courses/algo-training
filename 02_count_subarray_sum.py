@@ -4,6 +4,8 @@ A subarray is a contiguous non-empty sequence of elements within an array.
 """
 
 from collections import defaultdict
+from utils.time import chrono
+import csv
 
 
 def count_subarray_sum1(nums: list[int], k: int) -> int:
@@ -68,19 +70,44 @@ if __name__ == "__main__":
     d = [2, -1, 1]
     e = [1, 1, 1]
     f = [1, 2, 3]
+    g = []
+
+    with open("assets/15000_numbers.csv", "r") as fd:
+        reader = csv.reader(fd)
+        for row in reader:
+            g.extend(row)
+
+    g = [int(i) for i in g]
+
     print("== Cumulative sum ==")
-    print(f"nums={a}", "and k=5", "returns:", count_subarray_sum1(a, 5))
-    print(f"nums={b}", "and k=3", "returns:", count_subarray_sum1(b, 3))
-    print(f"nums={c}", "and k=1", "returns:", count_subarray_sum1(c, 1))
-    print(f"nums={d}", "and k=2", "returns:", count_subarray_sum1(d, 2))
-    print(f"nums={e}", "and k=2", "returns:", count_subarray_sum1(e, 2))
-    print(f"nums={f}", "and k=3", "returns:", count_subarray_sum1(f, 3))
+    ret = chrono(count_subarray_sum1, a, 5)
+    print(f"nums={a} and k=5,", "returns:", f"{ret.rval},", "takes:", ret.time)
+    ret = chrono(count_subarray_sum1, b, 3)
+    print(f"nums={b} and k=3,", "returns:", f"{ret.rval},", "takes:", ret.time)
+    ret = chrono(count_subarray_sum1, c, 1)
+    print(f"nums={c} and k=1,", "returns:", f"{ret.rval},", "takes:", ret.time)
+    ret = chrono(count_subarray_sum1, d, 2)
+    print(f"nums={d} and k=2,", "returns:", f"{ret.rval},", "takes:", ret.time)
+    ret = chrono(count_subarray_sum1, e, 2)
+    print(f"nums={e} and k=2,", "returns:", f"{ret.rval},", "takes:", ret.time)
+    ret = chrono(count_subarray_sum1, f, 3)
+    print(f"nums={f} and k=3,", "returns:", f"{ret.rval},", "takes:", ret.time)
+    ret = chrono(count_subarray_sum1, g, 6)
+    print(f"15000 numbers and k=6,", "returns:", f"{ret.rval},", "takes:", ret.time)
 
     print()
     print("== Hash table ==")
-    print(f"nums={a}", "and k=5", "returns:", count_subarray_sum2(a, 5))
-    print(f"nums={b}", "and k=3", "returns:", count_subarray_sum2(b, 3))
-    print(f"nums={c}", "and k=1", "returns:", count_subarray_sum2(c, 1))
-    print(f"nums={d}", "and k=2", "returns:", count_subarray_sum2(d, 2))
-    print(f"nums={e}", "and k=2", "returns:", count_subarray_sum2(e, 2))
-    print(f"nums={f}", "and k=3", "returns:", count_subarray_sum2(f, 3))
+    ret = chrono(count_subarray_sum2, a, 5)
+    print(f"nums={a} and k=5,", "returns:", f"{ret.rval},", "takes:", ret.time)
+    ret = chrono(count_subarray_sum2, b, 3)
+    print(f"nums={b} and k=3,", "returns:", f"{ret.rval},", "takes:", ret.time)
+    ret = chrono(count_subarray_sum2, c, 1)
+    print(f"nums={c} and k=1,", "returns:", f"{ret.rval},", "takes:", ret.time)
+    ret = chrono(count_subarray_sum2, d, 2)
+    print(f"nums={d} and k=2,", "returns:", f"{ret.rval},", "takes:", ret.time)
+    ret = chrono(count_subarray_sum2, e, 2)
+    print(f"nums={e} and k=2,", "returns:", f"{ret.rval},", "takes:", ret.time)
+    ret = chrono(count_subarray_sum2, f, 3)
+    print(f"nums={f} and k=3,", "returns:", f"{ret.rval},", "takes:", ret.time)
+    ret = chrono(count_subarray_sum2, g, 6)
+    print(f"15000 numbers and k=6,", "returns:", f"{ret.rval},", "takes:", ret.time)
