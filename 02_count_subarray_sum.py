@@ -8,12 +8,8 @@ from collections import defaultdict
 
 def count_subarray_sum1(nums: list[int], k: int) -> int:
     """
-    Brute force.
-
-    Time complexity: O(n^3). Considering every possible subarray takes O(n^2) time.
-    For each of the subarray we calculate the sum taking O(n) time in the worst
-    case, taking a total of O(n^3) time.
-
+    Cumulative sum.
+    Time complexity: O(n^2). Considering every possible subarray takes O(n^2) time.
     Space complexity : O(1). Constant space is used.
 
     """
@@ -30,9 +26,12 @@ def count_subarray_sum1(nums: list[int], k: int) -> int:
     return count
 
 
-def count_subarray_sum3(nums: list[int], k: int) -> int:
+def count_subarray_sum2(nums: list[int], k: int) -> int:
     """
-    O(n) time complexity and O(n) space complexity with hashtable (dictionary, map)
+    Hashtable / Dictionary / Map
+    Time complexity: O(n).
+    Space complexity: O(n).
+
     """
     n = len(nums)
 
@@ -69,7 +68,7 @@ if __name__ == "__main__":
     d = [2, -1, 1]
     e = [1, 1, 1]
     f = [1, 2, 3]
-    print("== Brute force ==")
+    print("== Cumulative sum ==")
     print(f"nums={a}", "and k=5", "returns:", count_subarray_sum1(a, 5))
     print(f"nums={b}", "and k=3", "returns:", count_subarray_sum1(b, 3))
     print(f"nums={c}", "and k=1", "returns:", count_subarray_sum1(c, 1))
@@ -79,9 +78,9 @@ if __name__ == "__main__":
 
     print()
     print("== Hash table ==")
-    print(f"nums={a}", "and k=5", "returns:", count_subarray_sum3(a, 5))
-    print(f"nums={b}", "and k=3", "returns:", count_subarray_sum3(b, 3))
-    print(f"nums={c}", "and k=1", "returns:", count_subarray_sum3(c, 1))
-    print(f"nums={d}", "and k=2", "returns:", count_subarray_sum3(d, 2))
-    print(f"nums={e}", "and k=2", "returns:", count_subarray_sum3(e, 2))
-    print(f"nums={f}", "and k=3", "returns:", count_subarray_sum3(f, 3))
+    print(f"nums={a}", "and k=5", "returns:", count_subarray_sum2(a, 5))
+    print(f"nums={b}", "and k=3", "returns:", count_subarray_sum2(b, 3))
+    print(f"nums={c}", "and k=1", "returns:", count_subarray_sum2(c, 1))
+    print(f"nums={d}", "and k=2", "returns:", count_subarray_sum2(d, 2))
+    print(f"nums={e}", "and k=2", "returns:", count_subarray_sum2(e, 2))
+    print(f"nums={f}", "and k=3", "returns:", count_subarray_sum2(f, 3))
