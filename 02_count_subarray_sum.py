@@ -3,7 +3,6 @@ Given an array of integers nums and an integer k, return the total number of sub
 A subarray is a contiguous non-empty sequence of elements within an array.
 """
 
-from collections import defaultdict
 from utils.time import chrono
 import csv
 
@@ -35,31 +34,17 @@ def count_subarray_sum2(nums: list[int], k: int) -> int:
     Space complexity: O(n).
 
     """
-    n = len(nums)
-
+    occur = {0: 1}
     count = 0
-    dict_cumsum = defaultdict(int)  # hashtable for storing the cumsum
-    curr_sum = 0  # for cumulative sum at each index
-    for i in range(0, n):  # upto the length of the nums array
-        curr_sum += nums[i]  # cumulative sum in each index
-        if curr_sum == k:  # if current cumsum is equal to target
-            count += 1
-        # if curr_sum - k in the dict, then let's say
-        # curr_sum - k = some_val. so, curr_sum = k + some_val, means
-        # if the some_val is already in the dictionary, then there
-        # exists a subarray whose sum is k that has lead us to this
-        # curr_sum. How lead us? by some_val + k = curr_sum
-        # now if some_val occurs more than 1 time, means you have
-        # that number of subarray to consider to the count
-        # So you need to add that number of occurence of curr_sum - k
-        # to the count
-        # think about this with example nums list in the solution
-        # [3,4,7,2,-3,1,4,2] and also with [3,4,7,2,-3,1,4,2, 1]
-        if curr_sum - k in dict_cumsum:
-            count += dict_cumsum[curr_sum - k]
-        # add the curr_sum entry to the hashtable
-        dict_cumsum[curr_sum] += 1
-    # print(dict_cumsum)
+    curr_sum = 0
+    for i in range(len(nums)):
+        curr_sum += nums[i]  # cumulative sum
+        if curr_sum - k in occur:
+            count += occur[curr_sum - k]
+        if curr_sum in occur:
+            occur[curr_sum] += 1
+        else:
+            occur[curr_sum] = 1
     return count
 
 
